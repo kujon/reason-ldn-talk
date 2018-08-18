@@ -8,13 +8,18 @@
     "react-jsx": 2
   },
   "sources": {
-    "dir" : "src",
-    "subdirs" : true
+    "dir": "src",
+    "subdirs": true
   },
-  "package-specs": [{
-    "module": "commonjs",
-    "in-source": true
-  }],
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
   "suffix": ".bs.js",
   "namespace": true,
   "bs-dependencies": [
