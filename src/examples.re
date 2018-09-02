@@ -29,3 +29,15 @@ long bar = foo; // > NullPointerException
 
 System.out.println(foo.toString()); // > NullPointerException
 ";
+
+let javaErasure = "class ListStuff {
+    // java: name clash: printList(java.util.List<java.lang.Long>) and printList(java.util.List<java.lang.Integer>) have the same erasure
+    public void printList(List<Integer> ls) {
+
+    }
+
+    public void printList(List<Long> ls) {
+
+    }
+  }
+  ";

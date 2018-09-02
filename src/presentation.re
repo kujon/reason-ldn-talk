@@ -184,7 +184,14 @@ let make = _children => {
           <p>
             {
               s(
-                "Where unboxed and boxed types differ the most is in representing the concept of no value.",
+                "Where those two differ the most is in representing the concept of no value.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "This BTW is the quote by Tony Hoare, inventor of ALGOL and null reference itself.",
               )
             }
           </p>
@@ -222,6 +229,48 @@ let make = _children => {
             {
               s(
                 "Compiler doesn't try to do anything about this, so the only way you're gonna know about it is runtime.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Heading> {s("Type erasure")} </Heading>
+        <Notes>
+          <p>
+            {
+              s(
+                "I'm only going to touch on this briefly, because it's annoying.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaErasure
+        />
+        <Notes>
+          <p>
+            {
+              s(
+                "Java needs type information at runtime, otherwise it's unable to choose e.g. the correct overloads.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "At the same time it's got type erasure, meaning that all generic types are treated as the same type at runtime.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "Consider this simple printList example. List is a parameterised type and Java is unable to tell which one of the methods will be called at runtime, because both Integer and Long are considered the same type.",
               )
             }
           </p>
