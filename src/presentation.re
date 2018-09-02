@@ -98,12 +98,39 @@ let make = _children => {
         </Notes>
       </Slide>
       <Slide>
-        <Heading size=1> {s("Boxed vs. Unboxed")} </Heading>
+        <Heading size=1> {s("Unboxed vs. Boxed")} </Heading>
         <Notes>
           <p>
             {s("Ok, so let's learn about some features of this type system.")}
           </p>
-          <p> {s("Out of the box, Java has got 2 classes of types")} </p>
+          <p>
+            {
+              s(
+                "Out of the box, Java has got 2 classes of types: unboxed and boxed.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("Unboxed types (primitves) are pure values.")} </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaUnboxedToString
+        />
+        <Text>
+          {s("They behave like like values when it comes to equality.")}
+        </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaUnboxedValueEquality
+        />
+        <Notes>
+          <p> {s("Unboxed types (primitves) are pure values.")} </p>
+          <p> {s("They've got no methods.")} </p>
+          <p> {s("and they follow structural equality.")} </p>
         </Notes>
       </Slide>
       <Slide>
@@ -125,11 +152,79 @@ let make = _children => {
           <p>
             {
               s(
-                "The first class is something that you're going to be familar with, if you're coming from JavaScript background where everything is an object. They're called boxed types.",
+                "Boxed types is something that you're going to be familar with, if you're coming from JavaScript background where everything is an object.",
               )
             }
           </p>
           <p> {s("You can call methods on it.")} </p>
+          <p>
+            {
+              s(
+                "They also mostly behave like objects (or reference types) when it comes to equality.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "I'm saying mostly, because JVM optimises certain common cases into singletons (e.g. numbers below 128), which is similar to yet another language (Python), but that's a topic for another talk.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <BlockQuote>
+          <Quote textColor="white">
+            {s("I call it my billion-dollar mistake")}
+          </Quote>
+          <Cite> {s("Tony Hoare, inventor of NULL reference")} </Cite>
+        </BlockQuote>
+        <Notes>
+          <p>
+            {
+              s(
+                "Where unboxed and boxed types differ the most is in representing the concept of no value.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("You can assign null to a boxed type")} </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaBoxedNull
+        />
+        <Text> {s("But you cannot do the same to unboxed type")} </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaUnboxedNull
+        />
+        <Text> {s("This can result in null pointer exceptions.")} </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaNullPointer
+        />
+        <Notes>
+          <p> {s("This can result in null pointer exceptions.")} </p>
+          <p>
+            {
+              s(
+                "The most important takeway here is that null doesn't have a type, meaning it is assignable to any boxed type.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "Compiler doesn't try to do anything about this, so the only way you're gonna know about it is runtime.",
+              )
+            }
+          </p>
         </Notes>
       </Slide>
     </Deck>,
