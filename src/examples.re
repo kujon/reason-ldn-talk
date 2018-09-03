@@ -41,3 +41,12 @@ let javaErasure = "class ListStuff {
     }
   }
   ";
+
+let javaVarString = "var foo = \"forty two\";
+// Infers to: String foo = \"forty two\";
+";
+
+let javaVarLambda = "// java: cannot infer type for local variable bar
+// (lambda expression needs an explicit target-type)
+var bar = () -> \"bar\";
+";

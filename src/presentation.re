@@ -67,6 +67,7 @@ let make = _children => {
       <Slide transition=[|Fade|]>
         <Heading size=1> {s("Meet Java (10)")} </Heading>
         <Notes>
+          <p> {s("Meet our first friend, Java")} </p>
           <p>
             {
               s(
@@ -174,6 +175,7 @@ let make = _children => {
         </Notes>
       </Slide>
       <Slide>
+        <Heading size=1> {s("null")} </Heading>
         <BlockQuote>
           <Quote textColor="white">
             {s("I call it my billion-dollar mistake")}
@@ -237,10 +239,18 @@ let make = _children => {
       <Slide>
         <Heading> {s("Type erasure")} </Heading>
         <Notes>
+          <p> {s("Type erasure.")} </p>
           <p>
             {
               s(
-                "I'm only going to touch on this briefly, because it's annoying.",
+                "Java needs type information at runtime, otherwise it's unable to choose e.g. the correct overloads.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "At the same time it's got type erasure, meaning that all generic types are treated as the same type at runtime.",
               )
             }
           </p>
@@ -256,21 +266,71 @@ let make = _children => {
           <p>
             {
               s(
-                "Java needs type information at runtime, otherwise it's unable to choose e.g. the correct overloads.",
-              )
-            }
-          </p>
-          <p>
-            {
-              s(
-                "At the same time it's got type erasure, meaning that all generic types are treated as the same type at runtime.",
-              )
-            }
-          </p>
-          <p>
-            {
-              s(
                 "Consider this simple printList example. List is a parameterised type and Java is unable to tell which one of the methods will be called at runtime, because both Integer and Long are considered the same type.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Heading size=1> {s("Local type inference")} </Heading>
+        <Notes>
+          <p>
+            {
+              s(
+                "In Java 10 the story of local type inference has improved dramatically.",
+              )
+            }
+          </p>
+          <p>
+            {s("and this is because they've introduced the var keyword")}
+          </p>
+          <p>
+            {
+              s(
+                "it allows the type of the local variables to be inferred automatically.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("`var` keyword")} </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaVarString
+        />
+        <Text> {s("it doesn't work for all cases")} </Text>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="java"
+          source=Examples.javaVarLambda
+        />
+        <Notes>
+          <p>
+            {
+              s(
+                "one of the examples where it doesn't work is lambdas. and sticking to the theme of this compiler which doesn't make bold claims about its capabilities, it will simply tell you that it can't do it.",
+              )
+            }
+          </p>
+          <p> {s("I quite like this honesty.")} </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text>
+          {
+            s(
+              "Java very likeable. Not the sharpest, but very self-aware and honest about it.",
+            )
+          }
+        </Text>
+        <Notes>
+          <p>
+            {
+              s(
+                "Java very likeable. Not the sharpest, but very self-aware and honest about it.",
               )
             }
           </p>
