@@ -336,5 +336,58 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
+      <Slide>
+        <Heading size=1> {s("Let's catch up with TypeScript")} </Heading>
+        <Notes>
+          <p> {s("Let's catch up with TypeScript...")} </p>
+          <p>
+            {s("... which immediately strikes you as much more refined.")}
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Heading> {s("--strictNullChecks")} </Heading>
+        <Notes>
+          <p>
+            {s("The features TypeScript promises are much more advanced.")}
+          </p>
+          <p> {s("One of those things is null safety.")} </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="typescript"
+          source=Examples.tsNullSafety
+        />
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="typescript"
+          source=Examples.tsNotWorkingNullSafety
+        />
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="typescript"
+          source=Examples.tsUnions
+        />
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="typescript"
+          source=Examples.tsPatternMatching
+        />
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="typescript"
+          source=Examples.tsBrokenPatternMatching
+        />
+      </Slide>
     </Deck>,
 };
