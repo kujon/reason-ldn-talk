@@ -389,5 +389,39 @@ let make = _children => {
           source=Examples.tsBrokenPatternMatching
         />
       </Slide>
+      <Slide>
+        <Heading size=1> {s("Chatting to the outside world")} </Heading>
+        <Notes>
+          <p>
+            {
+              s(
+                "One of the things we do quite often is talking to the server.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "We are dealing with data sent to us by a 3rd party, so the safety at this boundary is paramount.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "To parse server responses you could use vanilla JSON.parse, which in TypeScript allows you to simply claim the response is of a certain type, without checking.",
+              )
+            }
+          </p>
+          <p> {s("This can lead to interesting scenarios.")} </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={24 |> string_of_int}
+          lang="typescript"
+          source=Examples.tsJsonParse
+        />
+      </Slide>
     </Deck>,
 };

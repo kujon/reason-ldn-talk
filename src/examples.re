@@ -122,3 +122,18 @@ function unionPatternMatching(value: myUnion): string {
     }
 }
 ";
+
+let tsJsonParse = "type Doctor = {
+    name: string;
+    shift: string;
+};
+
+const renderDoctor = (doc: Doctor) =>
+    `Dr. ${doc.name} works during those hours: ${doc.shift}`;
+
+const doctor: Doctor = JSON.parse('[{ \"name\": \"Who\", \"shift\": \"24/7\" }]');
+
+renderDoctor(doctor);
+// Dr. undefined works during those hours: function shift() { [native code] }
+
+";
