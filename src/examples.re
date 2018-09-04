@@ -173,3 +173,16 @@ let rec removeOptionals = ls =>
   | [Some(head), ...tail] => [head, ...removeOptionals(tail)]
   };
 ";
+
+let reasonMutability = "let foo = 42;
+/* Error: The value foo is not an instance variable */
+foo = 43;
+
+let bar = ref(42);
+bar := 42;
+
+/* Error: The value foo is not an instance variable */
+bar = foo;
+/* Error: The value foo is not an instance variable */
+foo = bar;
+";

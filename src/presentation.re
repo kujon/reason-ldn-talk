@@ -435,13 +435,6 @@ let make = _children => {
       <Slide> <Heading> {s("Hello OCaml")} </Heading> </Slide>
       <Slide>
         <Heading> {s("All-encompasing type inference")} </Heading>
-      </Slide>
-      <Slide>
-        <CodePane
-          textSize={20 |> string_of_int}
-          lang="reason"
-          source=Examples.reasonInference
-        />
         <Notes>
           <p>
             {
@@ -457,6 +450,23 @@ let make = _children => {
               )
             }
           </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={20 |> string_of_int}
+          lang="reason"
+          source=Examples.reasonInference
+        />
+        <Notes>
+          <p>
+            {
+              s(
+                "For example, this reasonably complex function doesn't need a single annotation.",
+              )
+            }
+          </p>
+          <p> {s("Everything is inferrered from the usage.")} </p>
         </Notes>
       </Slide>
       <Slide> <Heading> {s("Less is more - Variants")} </Heading> </Slide>
@@ -491,5 +501,77 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
+      <Slide>
+        <Heading> {s("Mutable vs. Immutable")} </Heading>
+        <Notes>
+          <p> {s("In Ocaml, everything is immutable by default.")} </p>
+          <p>
+            {
+              s(
+                "Mutability can be a useful tool though, and the compiler allows it.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "However, mutable and immutable types are not compatible with each other, so you will never accidentally end up converting one to the other",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("Different syntax")} </Text>
+        <CodePane
+          textSize={20 |> string_of_int}
+          lang="reason"
+          source=Examples.reasonMutability
+        />
+        <Notes>
+          <p>
+            {
+              s(
+                "You can achieve mutable by either using the mutable keyword...",
+              )
+            }
+          </p>
+          <p> {s("...or the reference type.")} </p>
+          <p>
+            {
+              s(
+                "As you can see, the reference type is not only incompatible with its immutable equivalent, but it's even got a different assignment syntax.",
+              )
+            }
+          </p>
+          <p> {s("hard to cheat in such environment.")} </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Heading> {s("PPX")} </Heading>
+        <Notes>
+          <p> {s("PPX is a feature that allows for syntax entensions")} </p>
+          <p> {s("e.g. JSX could be implemented using it.")} </p>
+          <p>
+            {
+              s(
+                "One of the coolest uses of it is dropping in the type system into strings which represent e.g. a different language.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("GraphQL PPX")} </Text>
+        <Image src="graphql.gif" />
+      </Slide>
+      <Slide>
+        <Text> {s("ppx_bs_css")} </Text>
+        <Image src="ppx_bs_css.png" />
+      </Slide>
+      <Slide>
+        <Text> {s("OCaml is simply a reliable and humble friend.")} </Text>
+      </Slide>
+      <Slide> <Text> {s("Thank you!")} </Text> </Slide>
     </Deck>,
 };
