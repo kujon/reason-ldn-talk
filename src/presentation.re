@@ -10,35 +10,23 @@ let make = _children => {
     <Deck transition=[|Zoom, Slide, Fade|]>
       <Slide transition=[|Zoom|]>
         <Heading size=1> {s("Compiler is your friend")} </Heading>
-        <Heading size=6>
-          {s("...but would you go to a pub with each one of them?")}
-        </Heading>
-        <Notes>
-          <p>
-            {
-              s(
-                "I want to talk to you about various type systems today. Specifically about how, 3 widly different languages, Java, TypeScript and OCaml approach type safety.",
-              )
-            }
-          </p>
-        </Notes>
       </Slide>
       <Slide transition=[|Slide|]>
         <Heading size=1> {s("Jakub Korzeniowski")} </Heading>
         <List>
-          <ListItem>
+          <ListItem textSize="32">
             {s("Vortexa, Intelligent Energy Markets: ")}
             <Link href="https://www.vortexa.com" target="_blank">
               {s("https://www.vortexa.com")}
             </Link>
           </ListItem>
-          <ListItem>
+          <ListItem textSize="32">
             {s("Twitter: ")}
             <Link href="https://twitter.com/carkujon" target="_blank">
               {s("@carkujon")}
             </Link>
           </ListItem>
-          <ListItem>
+          <ListItem textSize="32">
             {s("Github: ")}
             <Link href="https://github.com/kujon" target="_blank">
               {s("@kujon")}
@@ -61,6 +49,13 @@ let make = _children => {
               )
             }
           </p>
+          <p>
+            {
+              s(
+                "I want to talk to you about various type systems today. Specifically about how, 3 widly different languages, Java, TypeScript and OCaml approach type safety.",
+              )
+            }
+          </p>
           <p> {s("without further ado, let's get into it:")} </p>
         </Notes>
       </Slide>
@@ -78,7 +73,7 @@ let make = _children => {
         </Notes>
       </Slide>
       <Slide>
-        <Cite>
+        <Cite textSize="40">
           {
             s(
               "You acknowledge  that Licensed  Software is not designed or
@@ -92,10 +87,18 @@ let make = _children => {
           <p>
             {
               s(
-                "It could be there in author's opposition to nuclear power, or because the theme of this compiler is to not make bold claims about safety.",
+                "We can speculate whether it's there because of the opposition to nuclear power.",
               )
             }
           </p>
+          <p>
+            {
+              s(
+                "But I'd suggest it's because it would be really dangerous to control a nuclear facility with Java.",
+              )
+            }
+          </p>
+          <p> {s("And that's the theme of this compiler: honesty.")} </p>
         </Notes>
       </Slide>
       <Slide>
@@ -129,7 +132,13 @@ let make = _children => {
           source=Examples.javaUnboxedValueEquality
         />
         <Notes>
-          <p> {s("Unboxed types (primitves) are pure values.")} </p>
+          <p>
+            {
+              s(
+                "Unboxed types (primitves) are pure values, not backed by Java classes.",
+              )
+            }
+          </p>
           <p> {s("They've got no methods.")} </p>
           <p> {s("and they follow structural equality.")} </p>
         </Notes>
@@ -219,7 +228,6 @@ let make = _children => {
           source=Examples.javaNullPointer
         />
         <Notes>
-          <p> {s("This can result in null pointer exceptions.")} </p>
           <p>
             {
               s(
@@ -230,7 +238,7 @@ let make = _children => {
           <p>
             {
               s(
-                "Compiler doesn't try to do anything about this, so the only way you're gonna know about it is runtime.",
+                "Compiler cannot to do anything about this, so the only way you're gonna know about it is runtime.",
               )
             }
           </p>
@@ -250,7 +258,7 @@ let make = _children => {
           <p>
             {
               s(
-                "At the same time it's got type erasure, meaning that all generic types are treated as the same type at runtime.",
+                "At the same time it's got type erasure, meaning that all generic types become unknown at runtime.",
               )
             }
           </p>
@@ -263,10 +271,18 @@ let make = _children => {
           source=Examples.javaErasure
         />
         <Notes>
+          <p> {s("Consider this simple printList example.")} </p>
           <p>
             {
               s(
-                "Consider this simple printList example. List is a parameterised type and Java is unable to tell which one of the methods will be called at runtime, because both Integer and Long are considered the same type.",
+                "List is a parameterised type and Java is unable to tell which one of the methods will be called at runtime, because both Integer and Long are gone at runtime.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "The nice thing is that it notifies you about the difficulties it's having.",
               )
             }
           </p>
@@ -311,6 +327,13 @@ let make = _children => {
           <p>
             {
               s(
+                "So if you assign a string to a variable, it will know it's a string.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
                 "one of the examples where it doesn't work is lambdas. and sticking to the theme of this compiler which doesn't make bold claims about its capabilities, it will simply tell you that it can't do it.",
               )
             }
@@ -343,51 +366,164 @@ let make = _children => {
           <p>
             {s("... which immediately strikes you as much more refined.")}
           </p>
+          <p>
+            {
+              s(
+                "and it's even more remarkable, because it's trying to type JavaScript which is the wildest west possible.",
+              )
+            }
+          </p>
         </Notes>
       </Slide>
       <Slide>
         <Heading> {s("--strictNullChecks")} </Heading>
         <Notes>
           <p>
-            {s("The features TypeScript promises are much more advanced.")}
+            {s("One of the more advanced features is strict null checks.")}
           </p>
-          <p> {s("One of those things is null safety.")} </p>
         </Notes>
       </Slide>
       <Slide>
+        <Text> {s("null safety")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsNullSafety
         />
+        <Notes>
+          <p>
+            {
+              s(
+                "Here's a quick example of how TypeScript will prevent you from doing something silly.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "In the first example, we forgot to guard against null and the compiler didn't grant us permission to move forward.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "Big improvement over Java, and given than this feature is so awesome, you end up relying on it.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
+        <Text> {s("null safety?")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsNotWorkingNullSafety
         />
+        <Notes>
+          <p> {s("That is until it doesn't work.")} </p>
+          <p>
+            {
+              s(
+                "The only difference in this example is the order of checks and TS gets confused. And so do you.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "It's a common occurrence. There are tons of powerful features that make you trust your new friend, and then they become quite unreliable.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
+        <Heading size=4 textColor="white">
+          {s("Unions and \"Pattern matching\"")}
+        </Heading>
+        <Notes>
+          <p>
+            {
+              s(
+                "Another super cool feature are unions, which allow you to represent a concept of a type or another type.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("Exhaustiveness")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsUnions
         />
+        <Notes>
+          <p>
+            {
+              s(
+                "TypeScript, similarly to OCaml enforces exhaustiveness of your checks for you.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "So if you forget to guard against the case like in the first example, you'll get an error.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
+        <Text> {s("\"Pattern matchin\"")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsPatternMatching
         />
+        <Notes>
+          <p>
+            {
+              s(
+                "We really quite like this feature, so we decided to flip it on its head by doing the switch (true) construct.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "This allowed us to do more advanced checks akin to pattern matching.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
+        <Text> {s("Not exhaustive")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsBrokenPatternMatching
         />
+        <Notes>
+          <p>
+            {
+              s(
+                "However, when you apply this to our original union example, the compiler gets confused.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "and forces you to add a default case, which turns of exhaustiveness checks.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
         <Heading size=1> {s("Chatting to the outside world")} </Heading>
@@ -417,11 +553,27 @@ let make = _children => {
         </Notes>
       </Slide>
       <Slide>
+        <Text>
+          {
+            s(
+              "Dr. undefined works during those hours: function shift() { [native code] }",
+            )
+          }
+        </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsJsonParse
         />
+        <Notes>
+          <p>
+            {
+              s(
+                "Simply getting an array instead of an object from the server can lead to scenarios like this.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
         <Text>
@@ -431,8 +583,20 @@ let make = _children => {
             )
           }
         </Text>
+        <Notes>
+          <p>
+            {
+              s(
+                "Which leads me to the conclusion that TypeScript is incredible capable and confident, but struggles when pressed.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
-      <Slide> <Heading> {s("Hello OCaml")} </Heading> </Slide>
+      <Slide>
+        <Heading> {s("Hello OCaml")} </Heading>
+        <Notes> <p> {s("Let's move to the last one, OCaml.")} </p> </Notes>
+      </Slide>
       <Slide>
         <Heading> {s("All-encompasing type inference")} </Heading>
         <Notes>
@@ -453,6 +617,7 @@ let make = _children => {
         </Notes>
       </Slide>
       <Slide>
+        <Text> {s("Inferring everything from usage")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="reason"
@@ -469,33 +634,76 @@ let make = _children => {
           <p> {s("Everything is inferrered from the usage.")} </p>
         </Notes>
       </Slide>
-      <Slide> <Heading> {s("Less is more - Variants")} </Heading> </Slide>
       <Slide>
+        <Heading> {s("Less is more - Variants")} </Heading>
+        <Notes>
+          <p> {s("Variants are similar to typescripts unions")} </p>
+        </Notes>
+      </Slide>
+      <Slide>
+        <Text> {s("Exhaustiveness checks")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="reason"
           source=Examples.reasonVariantWarning
         />
+        <Notes>
+          <p>
+            {
+              s(
+                "Very similarly to typescript, OCaml will give you warnings about non exhaustive matches.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
+        <Text> {s("which you address by checking for all the cases")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="reason"
           source=Examples.reasonWorkingVariant
         />
+        <Notes>
+          <p>
+            {s("Which you address by checking for all possible cases.")}
+          </p>
+          <p>
+            {
+              s(
+                "One of the differences is that there's no concept of type narrowing.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "Type constructor of a variant cannot live in isolation, e.g. you couldn't have a function taking just foo",
+              )
+            }
+          </p>
+          <p> {s("Side-note: polymorphic variants are quite different.")} </p>
+        </Notes>
       </Slide>
       <Slide>
+        <Text> {s("Getting the value out")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="reason"
           source=Examples.reasonRemoveOptionals
         />
         <Notes>
-          <p> {s("Note how there's no concept of type narrowing.")} </p>
           <p>
             {
               s(
-                "Type constructor of a variant cannot live in isolation, therefore you must pattern match to get the value out of it",
+                "Therefore your only option to get the value out is to pattern match.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "I quite like the fact that OCaml humbly provides you only one reliable option to do that.",
               )
             }
           </p>
@@ -504,7 +712,9 @@ let make = _children => {
       <Slide>
         <Heading> {s("Mutable vs. Immutable")} </Heading>
         <Notes>
-          <p> {s("In Ocaml, everything is immutable by default.")} </p>
+          <p>
+            {s("Another thing is that, everything is immutable by default.")}
+          </p>
           <p>
             {
               s(
@@ -532,7 +742,7 @@ let make = _children => {
           <p>
             {
               s(
-                "You can achieve mutable by either using the mutable keyword...",
+                "You can achieve mutability by either using the mutable keyword...",
               )
             }
           </p>
@@ -550,7 +760,8 @@ let make = _children => {
       <Slide>
         <Heading> {s("PPX")} </Heading>
         <Notes>
-          <p> {s("PPX is a feature that allows for syntax entensions")} </p>
+          <p> {s("PPX is the coolest of the features IMHO.")} </p>
+          <p> {s("It allows for syntactic extensions of the language.")} </p>
           <p> {s("e.g. JSX could be implemented using it.")} </p>
           <p>
             {
@@ -564,13 +775,41 @@ let make = _children => {
       <Slide>
         <Text> {s("GraphQL PPX")} </Text>
         <Image src="graphql.gif" />
+        <Notes>
+          <p> {s("This is an example of a GraphQL PPX in action.")} </p>
+          <p>
+            {
+              s(
+                "All of this is really a string, but due to the PPX you get autocompletion and OCaml type checking inside of it, as it it was proper language.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "And all of this type checking happens against the schema of your own server.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
         <Text> {s("ppx_bs_css")} </Text>
         <Image src="ppx_bs_css.png" />
+        <Notes>
+          <p> {s("Another really good example is CSS PPX")} </p>
+          <p>
+            {
+              s(
+                "It let's you drop in a string with CSS in it and have it type check as if it was OCaml code.",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
       <Slide>
         <Text> {s("OCaml is simply a reliable and humble friend.")} </Text>
+        <Notes> <p> {s("And this is what I think of OCaml")} </p> </Notes>
       </Slide>
       <Slide> <Text> {s("Thank you!")} </Text> </Slide>
     </Deck>,
