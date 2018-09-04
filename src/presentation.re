@@ -116,7 +116,7 @@ let make = _children => {
       <Slide>
         <Text> {s("Unboxed types (primitves) are pure values.")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaUnboxedToString
         />
@@ -124,7 +124,7 @@ let make = _children => {
           {s("They behave like like values when it comes to equality.")}
         </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaUnboxedValueEquality
         />
@@ -137,7 +137,7 @@ let make = _children => {
       <Slide>
         <Text> {s("Boxed types have got methods.")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaBoxedMethodCall
         />
@@ -145,7 +145,7 @@ let make = _children => {
           {s("They mostly behave like objects when it comes to equality.*")}
         </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaBoxedReferenceEquality
         />
@@ -202,19 +202,19 @@ let make = _children => {
       <Slide>
         <Text> {s("You can assign null to a boxed type")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaBoxedNull
         />
         <Text> {s("But you cannot do the same to unboxed type")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaUnboxedNull
         />
         <Text> {s("This can result in null pointer exceptions.")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaNullPointer
         />
@@ -258,7 +258,7 @@ let make = _children => {
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaErasure
         />
@@ -297,13 +297,13 @@ let make = _children => {
       <Slide>
         <Text> {s("`var` keyword")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaVarString
         />
         <Text> {s("it doesn't work for all cases")} </Text>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="java"
           source=Examples.javaVarLambda
         />
@@ -356,35 +356,35 @@ let make = _children => {
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsNullSafety
         />
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsNotWorkingNullSafety
         />
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsUnions
         />
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsPatternMatching
         />
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsBrokenPatternMatching
         />
@@ -418,10 +418,78 @@ let make = _children => {
       </Slide>
       <Slide>
         <CodePane
-          textSize={24 |> string_of_int}
+          textSize={20 |> string_of_int}
           lang="typescript"
           source=Examples.tsJsonParse
         />
+      </Slide>
+      <Slide>
+        <Text>
+          {
+            s(
+              "TypeScript is very capable and confident, but struggles when pressed.",
+            )
+          }
+        </Text>
+      </Slide>
+      <Slide> <Heading> {s("Hello OCaml")} </Heading> </Slide>
+      <Slide>
+        <Heading> {s("All-encompasing type inference")} </Heading>
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={20 |> string_of_int}
+          lang="reason"
+          source=Examples.reasonInference
+        />
+        <Notes>
+          <p>
+            {
+              s(
+                "You could theoretically write your program without any type annotations and get full type coverage.",
+              )
+            }
+          </p>
+          <p>
+            {
+              s(
+                "Whereas in Java or TypeScript your operations can be unchecked, OCaml won't compile unless it knows the type of each expression.",
+              )
+            }
+          </p>
+        </Notes>
+      </Slide>
+      <Slide> <Heading> {s("Less is more - Variants")} </Heading> </Slide>
+      <Slide>
+        <CodePane
+          textSize={20 |> string_of_int}
+          lang="reason"
+          source=Examples.reasonVariantWarning
+        />
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={20 |> string_of_int}
+          lang="reason"
+          source=Examples.reasonWorkingVariant
+        />
+      </Slide>
+      <Slide>
+        <CodePane
+          textSize={20 |> string_of_int}
+          lang="reason"
+          source=Examples.reasonRemoveOptionals
+        />
+        <Notes>
+          <p> {s("Note how there's no concept of type narrowing.")} </p>
+          <p>
+            {
+              s(
+                "Type constructor of a variant cannot live in isolation, therefore you must pattern match to get the value out of it",
+              )
+            }
+          </p>
+        </Notes>
       </Slide>
     </Deck>,
 };

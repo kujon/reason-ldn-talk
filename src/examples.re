@@ -22,7 +22,9 @@ System.out.println(a == b); // > false
 
 let javaBoxedNull = "Long foo = null; // > :)";
 
-let javaUnboxedNull = "long bar = null; // > java: incompatible types: <nulltype> cannot be converted to long";
+let javaUnboxedNull = "// > java: incompatible types: <nulltype> cannot be converted to long
+long bar = null;
+";
 
 let javaNullPointer = "Long foo = null;
 long bar = foo; // > NullPointerException
@@ -136,4 +138,38 @@ const doctor: Doctor = JSON.parse('[{ \"name\": \"Who\", \"shift\": \"24/7\" }]'
 renderDoctor(doctor);
 // Dr. undefined works during those hours: function shift() { [native code] }
 
+";
+
+let reasonInference = "/* (bool, list(bool)) => bool; */
+  let foo = (a, b) => {
+    let c = b |> List.fold_left((left, right) => left && right, true);
+
+    a || c;
+  };
+";
+let reasonVariantWarning = "type myVariant =
+  | Foo
+  | Bar(float);
+
+let printVariant = value =>
+  switch (value) {
+  /*  You forgot to handle a possible value here, for example: Bar _ */
+  | Foo => \"Hello Foo!\"
+  };
+";
+
+let reasonWorkingVariant = "let printVariant = value =>
+  switch (value) {
+  | Foo => \"Hello Foo!\"
+  | Bar(floatValue) => \"Hello Bar \" ++ string_of_float(floatValue) ++ \" !\"
+  };
+";
+
+let reasonRemoveOptionals = "/* list(option('a)) => list('a) */
+let rec removeOptionals = ls =>
+  switch (ls) {
+  | [] => []
+  | [None, ...tail] => removeOptionals(tail)
+  | [Some(head), ...tail] => [head, ...removeOptionals(tail)]
+  };
 ";
