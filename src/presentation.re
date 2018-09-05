@@ -72,7 +72,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Cite textSize="40">
           {
             s(
@@ -101,7 +101,7 @@ let make = _children => {
           <p> {s("And that's the theme of this compiler: honesty.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Heading size=1> {s("Unboxed vs. Boxed")} </Heading>
         <Notes>
           <p>
@@ -116,7 +116,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Text> {s("Unboxed types (primitves) are pure values.")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -143,7 +143,7 @@ let make = _children => {
           <p> {s("and they follow structural equality.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("Boxed types have got methods.")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -183,7 +183,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Heading size=1> {s("null")} </Heading>
         <BlockQuote>
           <Quote textColor="white">
@@ -208,7 +208,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Text> {s("You can assign null to a boxed type")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -244,7 +244,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Heading> {s("Type erasure")} </Heading>
         <Notes>
           <p> {s("Type erasure.")} </p>
@@ -264,7 +264,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <CodePane
           textSize={20 |> string_of_int}
           lang="java"
@@ -288,7 +288,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Heading size=1> {s("Local type inference")} </Heading>
         <Notes>
           <p>
@@ -310,7 +310,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("`var` keyword")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -341,7 +341,7 @@ let make = _children => {
           <p> {s("I quite like this honesty.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Text>
           {
             s(
@@ -359,7 +359,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Heading size=1> {s("Let's catch up with TypeScript")} </Heading>
         <Notes>
           <p> {s("Let's catch up with TypeScript...")} </p>
@@ -375,7 +375,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Heading> {s("--strictNullChecks")} </Heading>
         <Notes>
           <p>
@@ -383,7 +383,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Text> {s("null safety")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -414,7 +414,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Text> {s("null safety?")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -439,7 +439,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Heading size=4 textColor="white">
           {s("Unions and \"Pattern matching\"")}
         </Heading>
@@ -453,7 +453,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Text> {s("Exhaustiveness")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -477,8 +477,8 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
-        <Text> {s("\"Pattern matchin\"")} </Text>
+      <Slide transition=[|Fade|]>
+        <Text> {s("\"Pattern matching\"")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
           lang="typescript"
@@ -501,7 +501,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("Not exhaustive")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -525,7 +525,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Heading size=1> {s("Chatting to the outside world")} </Heading>
         <Notes>
           <p>
@@ -552,7 +552,7 @@ let make = _children => {
           <p> {s("This can lead to interesting scenarios.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Text>
           {
             s(
@@ -575,7 +575,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text>
           {
             s(
@@ -593,11 +593,11 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Heading> {s("Hello OCaml")} </Heading>
         <Notes> <p> {s("Let's move to the last one, OCaml.")} </p> </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Heading> {s("All-encompasing type inference")} </Heading>
         <Notes>
           <p>
@@ -616,7 +616,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("Inferring everything from usage")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -634,13 +634,13 @@ let make = _children => {
           <p> {s("Everything is inferrered from the usage.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Heading> {s("Less is more - Variants")} </Heading>
         <Notes>
           <p> {s("Variants are similar to typescripts unions")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Text> {s("Exhaustiveness checks")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -657,7 +657,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("which you address by checking for all the cases")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -685,7 +685,7 @@ let make = _children => {
           <p> {s("Side-note: polymorphic variants are quite different.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Text> {s("Getting the value out")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -709,7 +709,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Heading> {s("Mutable vs. Immutable")} </Heading>
         <Notes>
           <p>
@@ -731,7 +731,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("Different syntax")} </Text>
         <CodePane
           textSize={20 |> string_of_int}
@@ -757,7 +757,7 @@ let make = _children => {
           <p> {s("hard to cheat in such environment.")} </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Heading> {s("PPX")} </Heading>
         <Notes>
           <p> {s("PPX is the coolest of the features IMHO.")} </p>
@@ -772,7 +772,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Fade|]>
         <Text> {s("GraphQL PPX")} </Text>
         <Image src="graphql.gif" />
         <Notes>
@@ -793,7 +793,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Zoom|]>
         <Text> {s("ppx_bs_css")} </Text>
         <Image src="ppx_bs_css.png" />
         <Notes>
@@ -807,7 +807,7 @@ let make = _children => {
           </p>
         </Notes>
       </Slide>
-      <Slide>
+      <Slide transition=[|Slide|]>
         <Text> {s("OCaml is simply a reliable and humble friend.")} </Text>
         <Notes> <p> {s("And this is what I think of OCaml")} </p> </Notes>
       </Slide>
